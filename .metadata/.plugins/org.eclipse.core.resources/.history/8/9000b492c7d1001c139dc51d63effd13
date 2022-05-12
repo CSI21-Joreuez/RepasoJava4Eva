@@ -1,0 +1,129 @@
+package ConexionBBDD;
+
+public class App implements ExamenBBDD{
+
+	//Sumar las Columnas de Una Matriz y guardarlas en otro Array
+	@Override
+	public int[] sumaColumnasMatriz(int[][] m) {
+
+		int[] vArray = new int [m[0].length];
+		
+		for (int i = 0; i < m[0].length; i++) { //numero Columnas
+				for (int j = 0; j < m.length; j++) { // Numero Filas
+					vArray[i]+=m[j][i];
+			}
+		}
+		return vArray;
+	}
+	@Override
+	public void SqlToCsv(String sql, String fichero) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	
+	
+	
+	public int secuenciaMayor(int[] v) {
+		// TODO Auto-generated method stub
+		 int contador = 0;
+	      int maxConsecutiva = 0;
+	      
+	      for (int i=0; i<v.length; i++)
+	    	  for (int j = 0; j < v.length; j++) 	
+	         if (v[ i ]== v[j]) {// Si El Primer dos y el Segundo 2 son iguales Cuenta
+	            contador++;
+	            /*
+	             * Existe la posibilidad de que una serie de ocurrencias finalice por el hecho
+	             * de que ya hemos llegado al ultimo elemento del array. En este caso, hemos de
+	             * comprobar si esta serie es mayor que otras que hayan podido haber anteriormente
+	             */
+	            if (i == v.length-1) {
+	               if (contador > maxConsecutiva) {//Actualizamos maxConsecutiva
+	                  maxConsecutiva = contador;
+	               }
+	            }
+	         }
+	         else {// Aquí tenemos dos posibles escenarios.
+	            
+	            /*
+	             * Escenario (1). NO estabamos contando porque en este momento no habían ocurrencias.
+	             * Podemos saber que estamos en este escenario si contador == 0.
+	             * En cualquier caso, en este escenario no tenemos que hacer nada de nada, así que ni
+	             * siquiera vamos a preguntar por el valor de contador. Simplemente dejamos que el bucle
+	             * siga su curso.
+	             */
+	            
+	            /*
+	             * Escenario (2). SÍ estabamos contando porque estabamos dentro de una serie de ocurrencias.
+	             * Podemos saber que estamos en este escenario si contador > 0.
+	             * En este escenario, tenemos que averiguar si esta serie de ocurrencias consecutivas (que ya ha
+	             * terminado puesto que ahora ya han dejado de haber ocurrencias), hay que ver si es mayor
+	             * que otras posibles series anteriores, en cuyo caso, actualizaremos la variable maxConsecutiva
+	             * que es la que cuenta la serie de ocurrencias más larga que tenga lugar.
+	             */
+	            if (contador > 0) {//Estabamos contando..
+	               if (contador > maxConsecutiva) {//Actualizamos maxConsecutiva
+	                  maxConsecutiva = contador;
+	               }
+	               contador = 0; //Reiniciamos contador, pues esta serie de ocurrencias ya ha finalizado
+	            }      
+	         }
+	      
+	      return maxConsecutiva;
+	   }
+	
+	
+	
+	@Override
+	public int mediImparesDesdePrimerPar(int[] v) {
+		// TODO Auto-generated method stub
+		int media = 0, aux = 0, cont = 0;
+		boolean check = false;
+		
+		for (int i = 0; i < v.length; i++)
+		{
+			if(!check) //Comprueba que sea el Primer par
+			if(v[i]%2 == 0)
+			{
+				aux = i;
+				check = true;
+			}
+				
+		}
+		
+		for (int i = aux; i < v.length; i++)
+		{
+			if(v[i]%2 != 0)
+			{
+				media+= v[i];
+				cont++;
+			}
+			   
+		}
+	
+		return (media/cont);
+	}
+	
+	//Suma Filas de Una Matriz
+	static void sumaFilas(int[][] matriz) { 
+	    for (int y = 0; y < matriz.length; y++) {
+	        int suma = 0;
+	        for (int x = 0; x < matriz[y].length; x++) {
+	            System.out.printf("%d ", matriz[y][x]);
+	            suma += matriz[y][x];
+	        }
+	        System.out.printf("= %d\n", suma);
+	    }
+	}
+	
+	//Ver Matriz
+	static void imprimirMatriz(int[][] matriz) {
+        for (int y = 0; y < matriz.length; y++) {
+            for (int x = 0; x < matriz[y].length; x++) {
+                System.out.printf("%d ", matriz[y][x]);
+            }
+            System.out.println();
+        }
+    }
+}

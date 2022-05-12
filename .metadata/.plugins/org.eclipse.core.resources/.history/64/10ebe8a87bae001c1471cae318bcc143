@@ -1,0 +1,29 @@
+package PruebaBBDD;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class BBDDConnect {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Connection connection;
+		try {
+			String url = "jdbc:mysql://localhost/prueba";
+
+			String user = "root";
+			String pass = "Primera01";
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/Prueba","root","Primera01");
+			System.out.println("Conectado a la base de Datos Mediante el usuario: "+user );
+			connection.close();
+			System.out.println("Desconectando de la Base de Datos");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("SQLException: "+e.getMessage());
+			System.out.println("SQLState: "+e.getSQLState());
+			System.out.println("SQLError: "+e.getErrorCode());
+		}
+	}
+
+}

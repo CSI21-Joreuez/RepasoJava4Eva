@@ -1,0 +1,16 @@
+package Paquete;
+public class Cuenta2 extends ClaseAbstrcta{
+
+	public Cuenta2(String titular) {
+		super(titular);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Cuenta2(String titular, double cantidad) {
+		super(titular, cantidad);
+		// TODO Auto-generated constructor stub
+	}
+	
+
+}
+

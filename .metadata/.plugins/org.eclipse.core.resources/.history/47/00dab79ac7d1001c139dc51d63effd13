@@ -1,0 +1,18 @@
+package Clases;
+
+import java.util.ArrayList;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		ArrayList<Persona> listasPersonas = new ArrayList<Persona>();
+		Persona p1 = new Persona("Juan", "Carlos", 20);
+		Persona p2 = new Persona("Jose", "Antonio", 19);
+		Futbolista f = new Futbolista("Migue", "Antonio", 22, "Maiami", 9, true, 5, 'I',02/02/02, 12);
+
+	}
+	
+
+}
